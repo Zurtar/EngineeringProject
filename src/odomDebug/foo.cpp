@@ -24,7 +24,7 @@ Debug state idk man it was very confusing. Also the word state looks very weird
 now :(
 */
 
-void setOdomState(OdomDebug::state_t state) {
+void setOdomState(OdomState state) {
   //
   OdomState newState = OdomState();
   newState.x = state.x;

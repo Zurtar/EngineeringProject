@@ -91,7 +91,7 @@ void lv_cb_set_text(lv_obj_t * cb, const char * txt);
  */
 static inline void lv_cb_set_checked(lv_obj_t * cb, bool checked)
 {
-    lv_btn_set_state(cb, checked ? LV_BTN_STATE_TGL_REL : LV_BTN_STATE_REL);
+    lv_btn_set_state(cb, checked ? LV_BTN_OdomStateGL_REL : LV_BTN_STATE_REL);
 }
 
 /**

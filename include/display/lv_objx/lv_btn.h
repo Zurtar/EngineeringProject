@@ -43,12 +43,12 @@ enum
 {
     LV_BTN_STATE_REL,
     LV_BTN_STATE_PR,
-    LV_BTN_STATE_TGL_REL,
-    LV_BTN_STATE_TGL_PR,
+    LV_BTN_OdomStateGL_REL,
+    LV_BTN_OdomStateGL_PR,
     LV_BTN_STATE_INA,
     LV_BTN_STATE_NUM,
 };
-typedef uint8_t lv_btn_state_t;
+typedef uint8_t lv_btn_OdomState;
 
 enum
 {
@@ -68,7 +68,7 @@ typedef struct
     /*New data for this type */
     lv_action_t actions[LV_BTN_ACTION_NUM];
     lv_style_t * styles[LV_BTN_STATE_NUM];        /*Styles in each state*/
-    lv_btn_state_t state;                         /*Current state of the button from 'lv_btn_state_t' enum*/
+    lv_btn_OdomState state;                         /*Current state of the button from 'lv_btn_OdomState' enum*/
 #if LV_BTN_INK_EFFECT
     uint16_t ink_in_time;                         /*[ms] Time of ink fill effect (0: disable ink effect)*/
     uint16_t ink_wait_time;                       /*[ms] Wait before the ink disappears */
@@ -114,9 +114,9 @@ void lv_btn_set_toggle(lv_obj_t * btn, bool tgl);
 /**
  * Set the state of the button
  * @param btn pointer to a button object
- * @param state the new state of the button (from lv_btn_state_t enum)
+ * @param state the new state of the button (from lv_btn_OdomState enum)
  */
-void lv_btn_set_state(lv_obj_t * btn, lv_btn_state_t state);
+void lv_btn_set_state(lv_obj_t * btn, lv_btn_OdomState state);
 
 /**
  * Toggle the state of the button (ON->OFF, OFF->ON)
@@ -189,9 +189,9 @@ void lv_btn_set_style(lv_obj_t * btn, lv_btn_style_t type, lv_style_t *style);
 /**
  * Get the current state of the button
  * @param btn pointer to a button object
- * @return the state of the button (from lv_btn_state_t enum)
+ * @return the state of the button (from lv_btn_OdomState enum)
  */
-lv_btn_state_t lv_btn_get_state(const lv_obj_t * btn);
+lv_btn_OdomState lv_btn_get_state(const lv_obj_t * btn);
 
 /**
  * Get the toggle enable attribute of the button

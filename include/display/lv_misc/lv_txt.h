@@ -48,7 +48,7 @@ enum
     LV_TXT_CMD_STATE_PAR,       /*Processing the parameter*/
     LV_TXT_CMD_STATE_IN,        /*Processing the command*/
 };
-typedef uint8_t lv_txt_cmd_state_t;
+typedef uint8_t lv_txt_cmd_OdomState;
 
 /**********************
  * GLOBAL PROTOTYPES
@@ -94,12 +94,12 @@ lv_coord_t lv_txt_get_width(const char * txt, uint16_t length,
 
 /**
  * Check next character in a string and decide if te character is part of the command or not
- * @param state pointer to a txt_cmd_state_t variable which stores the current state of command processing
+ * @param state pointer to a txt_cmd_OdomState variable which stores the current state of command processing
  * @param c the current character
  * @return true: the character is part of a command and should not be written,
  *         false: the character should be written
  */
-bool lv_txt_is_cmd(lv_txt_cmd_state_t * state, uint32_t c);
+bool lv_txt_is_cmd(lv_txt_cmd_OdomState * state, uint32_t c);
 
 /**
  * Insert a string into an other

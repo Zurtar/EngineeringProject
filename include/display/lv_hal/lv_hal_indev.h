@@ -44,7 +44,7 @@ enum {
     LV_INDEV_STATE_REL = 0,
     LV_INDEV_STATE_PR
 };
-typedef uint8_t lv_indev_state_t;
+typedef uint8_t lv_indev_OdomState;
 
 /*Data type when an input device is read */
 typedef struct {
@@ -55,7 +55,7 @@ typedef struct {
         int16_t enc_diff;      /*For LV_INDEV_TYPE_ENCODER number of steps since the previous read*/
     };
     void *user_data;           /*'lv_indev_drv_t.priv' for this driver*/
-    lv_indev_state_t state;    /*LV_INDEV_STATE_REL or LV_INDEV_STATE_PR*/
+    lv_indev_OdomState state;    /*LV_INDEV_STATE_REL or LV_INDEV_STATE_PR*/
 } lv_indev_data_t;
 
 /*Initialized by the user and registered by 'lv_indev_add()'*/
@@ -69,7 +69,7 @@ struct _lv_obj_t;
 
 /*Run time data of input devices*/
 typedef struct _lv_indev_proc_t {
-    lv_indev_state_t state;
+    lv_indev_OdomState state;
     union {
         struct {    /*Pointer and button data*/
             lv_point_t act_point;
@@ -85,7 +85,7 @@ typedef struct _lv_indev_proc_t {
             uint8_t wait_unil_release   :1;
         };
         struct {    /*Keypad data*/
-            lv_indev_state_t last_state;
+            lv_indev_OdomState last_state;
             uint32_t last_key;
         };
     };
