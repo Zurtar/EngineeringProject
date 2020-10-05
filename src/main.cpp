@@ -79,8 +79,8 @@ void opcontrol() {
   OdomDebug display(lv_scr_act(), LV_COLOR_PURPLE);
   OdomState tempState;
   while (true) {
-    tempState = chassis->getState() display.setData(
-        {tempState.x, tempState.y, tempState.theta},
-        {leftEncoder.get(), rightEncoder.get(), backEncoder.get()})
+    tempState = chassis->getState();
+    display.setData({tempState.x, tempState.y, tempState.theta},
+                    {leftEncoder.get(), rightEncoder.get(), backEncoder.get()});
   }
 }
