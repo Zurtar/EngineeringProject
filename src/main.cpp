@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <odomdebug/odomdebug.h>
 /**
  * A callback function for LLEMU's center button.
  *
@@ -20,7 +20,7 @@ void on_center_button() {
  * Runs initialization code. This occurs as soon as the program is started.
  *
  * All other competition modes are blocked by initialize; it is recommended
- * to keep execution time for this mode under a few seconds.
+ * to keep execution time fors this mode under a few seconds.
  */
 void initialize() {
 	pros::lcd::initialize();
@@ -28,6 +28,7 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 	chassis->setState({0_in,0_in,0_deg});
+	chassis->getState();
 }
 
 /**
@@ -91,5 +92,6 @@ void opcontrol() {
 		left_mtr = left;
 		right_mtr = right;
 		pros::delay(20);
+
 	}
 }
