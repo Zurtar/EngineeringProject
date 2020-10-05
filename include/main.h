@@ -1,5 +1,5 @@
 /**
- * \file main.h
+ *
  *
  * Contains common definitions and header files used throughout your PROS
  * project.
@@ -35,11 +35,12 @@
 #define PROS_USE_LITERALS
 
 #include "api.h"
-#include "devices.h"
+
 /**
  * You should add more #includes here
  */
-//#include "okapi/api.hpp"
+ #include "devices.h"
+#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
 /**
