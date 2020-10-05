@@ -1,20 +1,4 @@
-#include "odomDebug/odomDebug.h"
-
-/**
- * @param ix QLength
- * @param iy QLength
- * @param itheta QAngle
- */
-OdomState state(QLength ix, QLength iy, QAngle itheta)
-    : x(ix), y(iy), theta(itheta) {}
-
-/**
- * @param ix inches
- * @param iy inches
- * @param itheta radians
- */
-OdomState state(double ix, double iy, double itheta)
-    : x(ix * inch), y(iy * inch), theta(itheta * radian) {}
+#include "odomDebug.h"
 
 /**
  * @param ileft the left encoder value
