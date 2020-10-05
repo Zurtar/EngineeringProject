@@ -1,5 +1,5 @@
 #include "main.h"
-#include <odomdebug/odomdebug.h>
+#include "odomdebug.h"
 /**
  * A callback function for LLEMU's center button.
  *
