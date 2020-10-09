@@ -1,5 +1,5 @@
 /**
- * 
+ *
  *
  * Contains common definitions and header files used throughout your PROS
  * project.
@@ -36,8 +36,6 @@
 
 #include "api.h"
 #include "devices.h"
-//sssssss
-
 
 /**
  * You should add more #includes here

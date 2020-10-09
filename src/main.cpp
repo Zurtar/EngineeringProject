@@ -59,7 +59,7 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() { chassis->turnToAngle(90_deg); }
+void autonomous() { chassis->turnToAngle(90 deg); }
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -77,10 +77,15 @@ void autonomous() { chassis->turnToAngle(90_deg); }
 void opcontrol() {
   pros::Controller master(pros::E_CONTROLLER_MASTER);
   OdomDebug display(lv_scr_act(), LV_COLOR_PURPLE);
-  OdomState tempState;
+  OdomState tempState=chassis.getState();
+
+
+  // OdomState tempState;
   while (true) {
-    tempState = chassis->getState();
-    display.setData({tempState.x, tempState.y, tempState.theta},
-                    {leftEncoder.get(), rightEncoder.get(), backEncoder.get()});
+  tempState = chassis->getState();
+  display.setData({tempState.x, tempState.y, tempState.theta},
+  {leftEncoder.get(), rightEncoder.get(), backEncoder.get()});
+
+  pros::delay(20);
   }
 }
