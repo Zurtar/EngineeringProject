@@ -27,7 +27,7 @@ void initialize() {
   pros::lcd::set_text(1, "Hello PROS User!");
 
   pros::lcd::register_btn1_cb(on_center_button);
-  // OdomDebug display(lv_scr_act(), LV_COLOR_PURPLE);
+  OdomDebug display(lv_scr_act(), LV_COLOR_PURPLE);
 }
 
 /**
@@ -79,7 +79,8 @@ void opcontrol() {
 
   // Very poor way of handling this conversion from OdomState to OdomDebug state
   OdomDebug display(lv_scr_act(), LV_COLOR_PURPLE);
-  while (true) {
+	chassis->turnToAngle(1_deg);
+	while (true) {
     display.setData(chassis->getState(),
                     {leftEncoder.get(), rightEncoder.get(), backEncoder.get()});
   }
