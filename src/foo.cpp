@@ -23,17 +23,3 @@ the same values just make another instance of the OdomState and store it for the
 Debug state idk man it was very confusing. Also the word state looks very weird
 now :(
 */
-
-void setOdomState(OdomState state) {
-  //
-  OdomState newState = OdomState();
-  newState.x = state.x;
-  newState.y = state.y;
-  newState.theta = state.theta;
-
-  chassis->setState(newState);
-}
-
-void resetOdomState() {
-  // foo
-}
