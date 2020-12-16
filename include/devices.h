@@ -18,4 +18,6 @@ extern ADIEncoder leftEncoder;
 extern ADIEncoder rightEncoder;
 extern ADIEncoder backEncoder;
 
+
+extern std::shared_ptr<okapi::AsyncMotionProfileController> profileController;
 extern std::shared_ptr<okapi::OdomChassisController> chassis;

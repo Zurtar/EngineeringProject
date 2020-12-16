@@ -31,12 +31,15 @@
  * to keep execution time fors this mode under a few seconds.
  */
 void initialize() {
-  // pros::lcd::initialize();
+  pros::lcd::initialize();
   pros::lcd::set_text(1, "Hello PROS User!");
-
-	OdomDebug display(lv_scr_act(), LV_COLOR_PURPLE);
-display.setStateCallback(setOdomStatee);
-display.setResetCallback(resetOdomStatee);
+  Logger::setDefaultLogger(
+    std::make_shared<Logger>(
+        TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
+        "/ser/sout", // Output to the PROS terminal
+        Logger::LogLevel::debug // Show errors and warnings
+    )
+);
 }
 
 /**
@@ -85,12 +88,13 @@ void autonomous() { chassis->turnToAngle(90_deg); }
  */
 void opcontrol() {
   pros::Controller master(pros::E_CONTROLLER_MASTER);
+  chassis->setState({0_ft,0_ft,0_deg});
+  chassis->turnToAngle(360_deg);
 
-  // Very poor way of handling this conversion from OdomState to OdomDebug state
-	//chassis->turnToAngle(1_deg);
-	printf("L: %d\n",leftEncoder.get());
-	printf("B: %d\n",backEncoder.get());
-	printf("R: %d\n",rightEncoder.get());
-
-	// chassis->driveToPoint({2_ft,2_ft});
+while(true){
+  // if(abs(leftEncoder.get()) >= 1000 || abs(rightEncoder.get())>=1000||abs(backEncoder.get()) >=1000){
+  // printf("\n\n%f %f %f",leftEncoder.get(),rightEncoder.get(),backEncoder.get());}
+  printf("%s\n",chassis->getState().str().c_str());
+  pros::delay(10);
+    }
 }
