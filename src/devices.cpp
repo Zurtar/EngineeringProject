@@ -22,7 +22,7 @@ std::shared_ptr<okapi::OdomChassisController> chassis = okapi::ChassisController
                 {0.001, 0, 0.0001}  // angle controller gains (helps drive straight)
             )
           //Declaring the dimensions of our wheels these values need to be adjusted, also declares gearset
-          .withDimensions(AbstractMotor::gearset::green,{{4_in,11.75_in,7.5_in,4_in},quadEncoderTPR})
+          .withDimensions(AbstractMotor::gearset::green,{{4_in,7.75_in,7.5_in,4_in},quadEncoderTPR})
           //setting up our tracking encoders
           .withSensors(leftEncoder, rightEncoder,backEncoder)
           .withOdometry()

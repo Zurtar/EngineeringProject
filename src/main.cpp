@@ -37,7 +37,7 @@ void initialize() {
     std::make_shared<Logger>(
         TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
         "/ser/sout", // Output to the PROS terminal
-        Logger::LogLevel::debug // Show errors and warnings
+        Logger::LogLevel::info // Show info and below warnings
     )
 );
 }
@@ -88,13 +88,25 @@ void autonomous() { chassis->turnToAngle(90_deg); }
  */
 void opcontrol() {
   pros::Controller master(pros::E_CONTROLLER_MASTER);
-  chassis->setState({0_ft,0_ft,0_deg});
-  chassis->turnToAngle(360_deg);
+  // chassis->setState({0_ft,0_ft,0_deg});
+chassis->driveToPoint({1_ft,0_ft});
+// chassis->waitUntilSettled();
+
+okapi::OdomState state= OdomState();
 
 while(true){
-  // if(abs(leftEncoder.get()) >= 1000 || abs(rightEncoder.get())>=1000||abs(backEncoder.get()) >=1000){
-  // printf("\n\n%f %f %f",leftEncoder.get(),rightEncoder.get(),backEncoder.get());}
+  if(abs(leftEncoder.get()) >= 1000 || abs(rightEncoder.get())>=1000|| abs(backEncoder.get()) >=1000){
+  printf("\n\n%f %f %f",leftEncoder.get(),rightEncoder.get(),backEncoder.get());
+}
+
+if(state!=chassis->getState()){
+  state=chassis->getState();
   printf("%s\n",chassis->getState().str().c_str());
+QLength x=  state.x;
+  x=(x/1000)* okapi::mmToInch;
+  printf("%f",x);
+}
+
   pros::delay(10);
-    }
+}
 }
